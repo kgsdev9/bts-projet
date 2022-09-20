@@ -68,73 +68,77 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+
+
+    public function store(Request $request){
+
+
+
         $inputs = $request->input();
 
-        Validator::make($inputs,[
-       "nom" =>['required','string','max:255'] ,
-       "prenom" =>['required','string','max:255'] ,
-       "date_de_naissance" =>['required','string','max:255'] ,
-       "lieu_de_naissance" =>['required','string','max:255'] ,
-       "sexe" =>['required','string','max:255'] ,
-       "statut" =>['required','string','max:255'] ,
-       "nationnalite" =>['required','string','max:255'] ,
-       "telephone_1" =>['required',] ,
-       "examen" =>['required','string','max:255'] ,
-       "filiere" =>['required','string','max:255'] ,
-       "ecole_d_origine" =>['required','string','max:255'] ,
-       "matricule" =>['required','string','max:255', Rule::unique(Candidature::class)] ,
-       "serie_du_bac" =>['required','string','max:255'] ,
-       "mention" =>['required','string','max:255'] ,
-       "points_au_bac" =>['required',] ,
-       "numero_de_table" =>['required','string','max:255'] ,
-       "ville" =>['required','string','max:255'] ,
-       "centre_de_composition" =>['required','string','max:255'] ,
-       "email" =>['required','string','max:255'] ,
-       "user_id" =>['required']
-         ])->validate();
-
-         if($request->file('photo')!=null){
-
-            $filename = time().$request->file('photo')->getClientOriginalName();
-            $path =$request->file('photo')->storeAs('candidats/photo',$filename,'public');
-            $file ='/storage/'.$path;
-        }else{
-            $file = null;
-        }
-       $candidat =  Candidature::create([
-
-            "nom" =>$inputs['nom'],
-            "prenom" => $inputs['prenom'],
-            "date_de_naissance" => $inputs['date_de_naissance'],
-            "lieu_de_naissance" =>$inputs['lieu_de_naissance'],
-            "sexe" => $inputs['sexe'],
-            "statut" =>$inputs['statut'],
-            "nationnalite" =>$inputs['nationnalite'],
-            "telephone_1" =>$inputs['telephone_1'],
-            "examen" => $inputs['examen'],
-            "filiere" => $inputs['filiere'],
-            "ecole_d_origine" => $inputs['ecole_d_origine'],
-            "matricule" =>$inputs['matricule'],
-            "serie_du_bac" =>$inputs['serie_du_bac'],
-            "mention" =>$inputs['mention'],
-            "points_au_bac" =>$inputs['points_au_bac'],
-            "numero_de_table" =>$inputs['numero_de_table'],
-            "ville" => $inputs['ville'],
-            "centre_de_composition" =>$inputs['centre_de_composition'],
-            "email" => $inputs['email'],
-            "photo"=>$file,
-            "user_id" =>$inputs['user_id'],
-
-        ]);
-
-        return redirect()->route('admin.create')->with('admin-success',' Candidature soumis avec succès !');
+       Validator::make($inputs,[
+      "nom" =>['required','string','max:255'] ,
+      "prenom" =>['required','string','max:255'] ,
+      "date_de_naissance" =>['required','string','max:255'] ,
+      "lieu_de_naissance" =>['required','string','max:255'] ,
+      "sexe" =>['required','string','max:255'] ,
+      "statut" =>['required','string','max:255'] ,
+      "nationnalite" =>['required','string','max:255'] ,
+      "telephone_1" =>['required',] ,
+      "examen" =>['required','string','max:255'] ,
+      "filiere" =>['required','string','max:255'] ,
+      "ecole_d_origine" =>['required','string','max:255'] ,
+      "matricule" =>['required','string','max:255', Rule::unique(Candidature::class)] ,
+      "serie_du_bac" =>['required','string','max:255'] ,
+      "mention" =>['required','string','max:255'] ,
+      "points_au_bac" =>['required',] ,
+      "numero_de_table" =>['required','string','max:255'] ,
+      "ville" =>['required','string','max:255'] ,
+      "centre_de_composition" =>['required','string','max:255'] ,
+      "email" =>['required','string','max:255'] ,
+      "user_id" =>['required']
+        ])->validate();
 
 
+        $update_id  =  new Candidature();
+        $update_id->nom  = $request->input('nom');
+        $update_id->prenom  = $request->input('prenom');
+        $update_id->date_de_naissance  = $request->input('date_de_naissance');
+        $update_id->lieu_de_naissance  = $request->input('lieu_de_naissance');
+        $update_id->sexe  = $request->input('sexe');
+        $update_id->statut  = $request->input('statut');
+        $update_id->nationnalite  = $request->input('nationnalite');
+        $update_id->telephone_1  = $request->input('telephone_1');
+        $update_id->examen   = $request->input('examen');
+         $update_id->filiere  = $request->input('filiere');
+         $update_id->ecole_d_origine  = $request->input('ecole_d_origine');
+         $update_id->matricule  = $request->input('matricule');
+         $update_id->serie_du_bac  = $request->input('serie_du_bac');
+         $update_id->mention  = $request->input('mention');
+         $update_id->points_au_bac  = $request->input('points_au_bac');
+         $update_id->numero_de_table  = $request->input('numero_de_table');
+         $update_id->ville  = $request->input('ville');
+         $update_id->centre_de_composition  = $request->input('centre_de_composition');
+         $update_id->email  = $request->input('email');
+         $update_id->user_id  = Auth::user()->id;
+
+         if($request->hasfile('photo')) {
+
+            $file = $request->file('photo');
+            $extention  = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('uploads/candidature/admin/' , $filename);
+            $update_id->photo  = $filename;
+         }
+         $update_id->save();
+         return redirect()->route('admin.create')->with('admin-success',' Candidature soumis avec succès !');
 
 
     }
+
+
+
+
 
     /**
      * Display the specified resource.

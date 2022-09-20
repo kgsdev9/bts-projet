@@ -28,11 +28,11 @@ class CandidatureController extends Controller
     }
 
     public function create(Request $request){
-        
+
 
 
         $inputs = $request->input();
-        
+
        Validator::make($inputs,[
       "nom" =>['required','string','max:255'] ,
       "prenom" =>['required','string','max:255'] ,
@@ -77,7 +77,7 @@ class CandidatureController extends Controller
          $update_id->ville  = $request->input('ville');
          $update_id->centre_de_composition  = $request->input('centre_de_composition');
          $update_id->email  = $request->input('email');
-         $update_id->user_id  = Auth::id();
+         $update_id->user_id  = Auth::user()->id;
 
          if($request->hasfile('photo')) {
 
@@ -85,17 +85,17 @@ class CandidatureController extends Controller
             $extention  = $file->getClientOriginalExtension();
             $filename = time().'.'.$extention;
             $file->move('uploads/candidature/' , $filename);
-            $update_id->photo  = $filename; 
+            $update_id->photo  = $filename;
          }
          $update_id->save();
         return redirect()->route('ajout_candidature')->with('success',' Candidature soumis avec succès !');
-      
-      
+
+
     }
 
 
 
-   
+
 
     public function detail($id_candidature){
 
@@ -106,12 +106,12 @@ class CandidatureController extends Controller
         ]);
 
     }
- 
 
-   
+
+
 
     public function delete($id_candidature){
-        $candidature = Candidature::find($id_candidature); 
+        $candidature = Candidature::find($id_candidature);
         $destination = 'uploads/candidature/' . $candidature->photo ;
         if(File::exists($destination )) {
             File::delete($destination);
@@ -123,7 +123,7 @@ class CandidatureController extends Controller
 
     public function edit($id_candidature){
 
-        $candidat = Candidature::where('id',$id_candidature)->first(); 
+        $candidat = Candidature::where('id',$id_candidature)->first();
 
         return view('dashboarduser.candidature.edit', compact('candidat'));
 
@@ -184,7 +184,7 @@ class CandidatureController extends Controller
 
          if($request->hasfile('photo')) {
 
-            $chemin = 'uploads/candidature/'.$update_id->photo; 
+            $chemin = 'uploads/candidature/'.$update_id->photo;
             if(File::exists($chemin)) {
 
                 File::delete($chemin) ;
@@ -194,19 +194,19 @@ class CandidatureController extends Controller
             $extention  = $file->getClientOriginalExtension();
             $filename = time().'.'.$extention;
             $file->move('uploads/candidature/' , $filename);
-            $update_id->photo  = $filename; 
+            $update_id->photo  = $filename;
 
          }
          $update_id->update()  ;
         return redirect()->route('detail_candidature', $update_id->id)->with('success',' Candidature modifier avec succès !');
-    
-    
-    } 
+
+
+    }
 
 
     public function export_excel() {
         return Excel::download(new CandidatureExport, 'candidatures.xlsx');
-        
+
     }
 
 
@@ -218,10 +218,10 @@ class CandidatureController extends Controller
 
 
     public function confirm()  {
-    
+
         $candidat_valide  =  Candidature::where('user_id',  Auth::user()->id)->where('etat', 'valide')->paginate(10);
-       
-        
+
+
         return view('dashboarduser.candidature.candidaturevalide', compact('candidat_valide'));
     }
 

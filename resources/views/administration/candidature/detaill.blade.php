@@ -22,7 +22,7 @@
           <div class="card-body">
           <div class="row">
             <div class="col-md-4" style="justify-content: center;padding-left:100px">
-                 <img width="110px" height="110px" src="{{asset('uploads/candidature/'.$candidat['photo'])}}" class="img-fluid">
+                 <img width="110px" height="110px" src="{{asset('uploads/candidature/admin/'.$candidat['photo'])}}" class="img-fluid">
 
             </div>
             <div class="col-md-4">
@@ -209,14 +209,14 @@
         </div>
       </div>
 
-      
+
 
     </div>
   </div>
 
 </div>
-   
-  
+
+
 </div>
 
 

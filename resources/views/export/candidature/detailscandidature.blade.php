@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="ThemeMarch">
   <!-- Site Title -->
-  <title>Flight Booking Invoice</title>
+  <title>TELECHARGER LA  CANDIDATURE</title>
   <link rel="stylesheet" href="{{public_path('asset/print/css/style.css')}}">
 </head>
 

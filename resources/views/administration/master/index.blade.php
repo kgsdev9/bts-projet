@@ -100,7 +100,7 @@
             </ul>
           </li>
           <!-- Tasks: style can be found in dropdown.less -->
-    
+
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -113,7 +113,7 @@
                 <img src="{{asset('asset/img/logo2.jpg')}}" class="img-circle" alt="User Image">
 
                 <p>
-                Administrateur {{Auth::user()->name}}   
+                Administrateur {{Auth::user()->name}}
                   <small>{{Auth::user()->created_at}}</small>
                 </p>
               </li>
@@ -164,11 +164,11 @@
         </div>
         <div class="pull-left info">
           <p>Bienvenue {{Auth::user()->name }}</p>
-        
+
         </div>
       </div>
       <!-- search form -->
-     
+
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
@@ -177,10 +177,10 @@
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Tableau D'administration  </span>
             <span class="pull-right-container">
-           
+
             </span>
           </a>
-         
+
         </li>
         <li class="treeview">
           <a href="#">
@@ -212,7 +212,7 @@
             <li><a href="{{route('admin.create')}}"><i class="fa fa-circle-o"></i> Nouvelle Candidature</a></li>
             <li><a href="{{route('list.admin')}}"><i class="fa fa-circle-o"></i> Liste De Mes Candidatures</a></li>
 
-          
+
           </ul>
         </li>
         <li class="treeview">
@@ -228,22 +228,10 @@
             <li><a href="{{route('candit.encours')}}"><i class="fa fa-circle-o"></i>Candidatures En Cours</a></li>
             <li><a href="{{route('candit.valide')}}"><i class="fa fa-circle-o"></i> Candidature Validée</a></li>
             <li><a href="{{route('candit.rejet')}}"><i class="fa fa-circle-o"></i> Candidature Rejetée</a></li>
-           
+
           </ul>
         </li>
 
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-table"></i> <span>Boite De Reception</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i>Message Recu</a></li>
-            <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Message Envoyé</a></li>
-          </ul>
-        </li>
 
         <li>
           <a href="/articles/forms">
@@ -262,8 +250,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i>Liste Des Utilisateurs</a></li>
-        
+            <li><a href="{{route('listes.users')}}"><i class="fa fa-circle-o"></i>Liste Des Utilisateurs</a></li>
+
           </ul>
         </li>
 
