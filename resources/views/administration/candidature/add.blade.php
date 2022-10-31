@@ -13,23 +13,19 @@
 <div class="col-md-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-
-        @if(session('admin-success'))
-        <div class="alert alert-success container">
-                {{session('success')}}
-
-        </div>
-
-        @endif
-
-
         <h4 class="card-title">NOUVELLE CANDIDATURE</h4>
-
-
         <br>
           <div class="col-md-11" style="text-transform: uppercase;">
             <form class="forms-sample" action="{{route('admin.insert')}}" method="post"  enctype="multipart/form-data">
               @csrf
+
+              @if(session('admin-success'))
+
+              <div class="alert alert-success">
+                      {{session('admin-success')}}
+              </div>
+
+              @endif
 
               <div class="row">
                   <div class="form-group col-md-6">
@@ -236,7 +232,9 @@
                       </div>
 
                       <div class="form-group col-md-6">
-                        <label for="exampleInputCity1">Ajouter une photo : </label>
+                        <label for="exampleInputCity1">Ajouter une photo :
+                            @error('photo') <small style="color: red">{{$message}}</small> @enderror</small>
+                    </label>
                         <input type="file" class="form-control" id="exampleInputCity1" placeholder="Location" name="photo">
                       </div>
                     </div>
@@ -247,7 +245,7 @@
                 <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
 
             <button type="submit" class="btn btn-primary mr-2">Soumettre</button> &nbsp;
-            <button class="btn btn-dark mr-2" ><a href=""  class="text-white">Annuler</a></button>
+            <a href="{{route('home.admin')}}"  class="text-white">Annuler</a>
             <br><br>
           </form>
 

@@ -9,7 +9,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-          Votre Profil 
+          Votre Profil
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
@@ -17,6 +17,7 @@
         <li class="active">Utilisateur</li>
       </ol>
     </section>
+
 
     <!-- Main content -->
     <section class="content">
@@ -27,7 +28,7 @@
           <!-- Profile Image -->
           <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="{{asset('asset/img/user4-128x128.jpg')}}" alt="User profile picture">
+              <img class="profile-user-img img-responsive img-circle" src="{{asset('ressources/img/logo.png')}}" alt="User profile picture">
 
               <h3 class="profile-username text-center">Bienvenue {{Auth::user()->name}}</h3>
 
@@ -55,9 +56,9 @@
                   <b>{{Auth::user()->role}}</b> <a class="pull-right"></a>
                 </li>
 
-             
 
-                
+
+
               </ul>
 
               <a href="#" class="btn btn-primary btn-block"><b>Profil Sur Insittut Roosvelt</b></a>
@@ -66,7 +67,7 @@
           </div>
           <!-- /.box -->
 
-          
+
         </div>
         <!-- /.col -->
         <div class="col-md-9">
@@ -74,17 +75,17 @@
             <ul class="nav nav-tabs">
               <li class="active"><a href="#activity" data-toggle="tab">Modifier Son Profil</a></li>
               <li><a href="#timeline" data-toggle="tab">Modifier Mot de passe</a></li>
-            
+
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="activity">
                 <!-- Post -->
-            
+
                 <form class="form-horizontal" method="post" action="{{route('user-profile-information.update')}}">
                   <div class="form-group">
                     @csrf
                     @method('PUT')
-                   
+
                   </div>
                   <div class="form-group">
                     <label for="inputEmail" class="col-sm-2 control-label">Nom </label>
@@ -100,19 +101,19 @@
                       <input type="email" class="form-control" id="inputName"  name="email"  value="{{Auth::user()->email}}">
                     </div>
                   </div>
-                  
-                 
-              
+
+
+
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                       <button type="submit" class="btn btn-danger">Enregistrer les modifications</button>
                     </div>
                   </div>
                 </form>
-             
 
-             
-            
+
+
+
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane" id="timeline">
@@ -125,7 +126,7 @@
                       <label for="inputName" class="col-sm-2 control-label">Mot de passe Courant  @error('current_password', 'updatePassword')
                             <small style="color:red;">{{$message}}</small>
                       @enderror</label>
-  
+
                       <div class="col-sm-10">
                         <input type="password" class="form-control" id="inputName"   name="current_password" >
                       </div>
@@ -137,25 +138,25 @@
                     <div class="form-group">
                       <label for="inputEmail"  class="col-sm-2 control-label">Nouveau Mot de passe  @error('password', 'updatePassword')
                         <small style="color:red;">{{$message}}</small>
-                        
+
                       @enderror</label>
                       <div class="col-sm-10">
                         <input type="password"   class="form-control" id="inputEmail" name="password">
                       </div>
-                    </div> 
+                    </div>
 
 
-                    
+
                     <div class="form-group">
-                      <label for="inputEmail"  class="col-sm-2 control-label">Confirmer Votre mot de passe  
-                        
+                      <label for="inputEmail"  class="col-sm-2 control-label">Confirmer Votre mot de passe
+
                         </label>
                       <div class="col-sm-10">
                         <input type="password"   class="form-control" id="inputEmail" name="password_confirmation">
                       </div>
-                    </div> 
-                    
-                  
+                    </div>
+
+
                     <div class="form-group">
                       <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-danger">Modifier  les modifications</button>
@@ -233,7 +234,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
- 
+
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

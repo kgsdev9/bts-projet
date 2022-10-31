@@ -3,7 +3,7 @@
 <html>
 <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Insittut Roosvelt</title>
+  <title>Espace D'administration</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -40,7 +40,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="{{url('/')}}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
@@ -61,42 +61,15 @@
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
+
             </a>
             <ul class="dropdown-menu">
-              <li class="header">You have 10 notifications</li>
+              <li class="header">date de creation {{ Auth::user()->created_at }}</li>
               <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
-                      page and may cause design problems
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-users text-red"></i> 5 new members joined
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-user text-red"></i> You changed your username
-                    </a>
-                  </li>
-                </ul>
+
+
               </li>
-              <li class="footer"><a href="#">View all</a></li>
+
             </ul>
           </li>
           <!-- Tasks: style can be found in dropdown.less -->
@@ -127,7 +100,7 @@
                     <a href="#">Candidature</a>
                   </div>
                   <div class="col-xs-4 text-center">
-                    <a href="#">Profile</a>
+                    <a href="{{url('/profile/admin')}}">Profile</a>
                   </div>
                 </div>
                 <!-- /.row -->
@@ -135,10 +108,14 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+
+                  <a href="{{url('/profile/admin')}}" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Deconnexion</a>
+                    <form action="{{route('logout')}}" method="POST">
+                        @csrf
+                        <button class="btn btn-white">Deconnexion</button>
+                </form>
                 </div>
               </li>
             </ul>
@@ -173,8 +150,8 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Menu Principale  </li>
-        <li class="active treeview">
-          <a href="#">
+        <li >
+          <a href="{{url('admin/index')}}">
             <i class="fa fa-dashboard"></i> <span>Tableau D'administration  </span>
             <span class="pull-right-container">
 
@@ -182,18 +159,16 @@
           </a>
 
         </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-files-o"></i>
-            <span>Accueil</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right">4</span>
-            </span>
-          </a>
-
-        </li>
         <li>
-          <a href="">
+            <a href="{{ url('/') }}">
+              <i class="fa fa-th"></i> <span>Retourner à L'accueil</span>
+              <span class="pull-right-container">
+                <small class="label pull-right bg-green">new</small>
+              </span>
+            </a>
+          </li>
+        <li>
+          <a href="{{url('/profile/admin')}}">
             <i class="fa fa-th"></i> <span>Profile</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">new</small>
@@ -251,6 +226,9 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{route('listes.users')}}"><i class="fa fa-circle-o"></i>Liste Des Utilisateurs</a></li>
+            <li><a href="/export/excel"><i class="fa fa-circle-o"></i>Rapport en Excel</a></li>
+            <li><a href="/candidature/pdf"><i class="fa fa-circle-o"></i>Rapport en PDF </a></li>
+
 
           </ul>
         </li>
@@ -267,10 +245,10 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
+      <b>2019</b> 2022
     </div>
-    <strong>Copyright &copy; 2014-2018 <a target="_blank" href="https://www.templateshub.net">Templates Hub</a>.</strong> All rights
-    reserved.
+    <strong>Tous Droits reservés à   &copy; Institut Roosvelet </a>.</strong>
+
   </footer>
 
   <!-- Control Sidebar -->

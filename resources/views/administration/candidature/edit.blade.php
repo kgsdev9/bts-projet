@@ -3,7 +3,7 @@
 
 
 @section('admin')
-    
+
 <div class="content-wrapper" >
     <div class="row">
 
@@ -233,16 +233,16 @@
               </div>
 
 
-             
 
-    
+
+
             </div>
 
 
               <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
               <input type="hidden" name="id_candidature" value="{{$c['id']}}">
               <button type="submit" class="btn btn-primary mr-2">Modifier</button>
-              <button  type="reset" class="btn btn-light">Annuler</button>
+              <a href="{{route('home.admin')}}"  class="btn btn-warning">Annuler</a>
             </form>
 
 

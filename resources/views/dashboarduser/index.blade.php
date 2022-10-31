@@ -6,7 +6,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-       Bienvenue 
+       Bienvenue
         <small>{{Auth::user()->name}}</small>
       </h1>
       <ol class="breadcrumb">
@@ -28,9 +28,9 @@
               <p>Total Candidature</p>
             </div>
             <div class="icon">
-              <i class="ion ion-bag"></i>
+
             </div>
-            <a href="#" class="small-box-footer">Consulter <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{route('liste_candidature')}}" class="small-box-footer">Consulter <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -43,9 +43,9 @@
               <p>Candidature Acceptée</p>
             </div>
             <div class="icon">
-              <i class="ion ion-stats-bars"></i>
+
             </div>
-            <a href="#" class="small-box-footer">Consulter <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{route('candidature.valide')}}" class="small-box-footer">Consulter <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -58,9 +58,9 @@
               <p>Candidature En Cours</p>
             </div>
             <div class="icon">
-              <i class="ion ion-person-add"></i>
+
             </div>
-            <a href="#" class="small-box-footer">Consulter <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{route('candidature.encours')}}" class="small-box-footer">Consulter <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -73,9 +73,9 @@
               <p>Candidature Refusée</p>
             </div>
             <div class="icon">
-              <i class="ion ion-pie-graph"></i>
+
             </div>
-            <a href="#" class="small-box-footer">Consulter <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{route('candidature.rejet')}}" class="small-box-footer">Consulter <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -92,9 +92,9 @@
 
 
                   <h3 class="box-title">Mes Candidatures</h3>
-    
+
                   <div class="box-tools">
-                  
+
                   </div>
                 </div>
                 <!-- /.box-header -->
@@ -112,10 +112,10 @@
                         <th>Etat</th>
                         <th>Actions</th>
                       </tr>
-  
+
                       @foreach ($cand_take_cinq as  $candidature )
                       <tr>
-                  
+
                         <td> {{$candidature->nom}}  {{$candidature->prenom}}</td>
                         <td> {{$candidature->nationnalite}}  </td>
                         <td> {{$candidature->telephone_1}}</td>
@@ -130,21 +130,21 @@
                           @elseif($candidature->etat =='rejet')
                           <span class="label label-danger">rejetée</span>
                           @endif
-                          
+
                         </td>
                         <td>
                           <a href="{{route('detail_candidature', $candidature->id)}}" class="btn btn-dark">Details</a>
                         </td>
-      
+
                       </tr>
                         @endforeach
                     </table>
                   </div>
-                  @else 
+                  @else
                   <span style="margin-left: 10px;"> Vous n'avez aucune candidature Pour L'instant ! </span>
                   @endif
 
-           
+
                 <!-- /.box-body -->
               </div>
               <!-- /.box -->
@@ -152,11 +152,11 @@
           </div>
 
 
-         
+
         </section>
         <!-- /.Left col -->
-     
-  
+
+
       </div>
       <!-- /.row (main row) -->
 
@@ -171,11 +171,11 @@
     <strong> Insititut Roosvelt une ecole d'excellence</strong>
   </footer>
 
- 
- 
+
+
 
 </div>
 <!-- ./wrapper -->
- 
+
 
 @endsection

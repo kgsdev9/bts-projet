@@ -6,7 +6,6 @@
 
 @section('document')
 
-
 <div class="content-wrapper">
 
 
@@ -18,15 +17,6 @@
     <div class="card">
       <div class="card-body">
 
-        @if(session('success'))
-        <div class="alert alert-success container">
-                {{session('success')}}
-
-        </div>
-
-        @endif
-
-
         <h4 class="card-title">NOUVELLE CANDIDATURE</h4>
 
 
@@ -34,6 +24,16 @@
           <div class="col-md-11" style="text-transform: uppercase;">
             <form class="forms-sample" action="{{route('creer_candidature')}}" method="post"  enctype="multipart/form-data">
               @csrf
+
+                @if(session('succes'))
+
+                <div class="alert alert-success">
+                        {{session('succes')}}
+                </div>
+
+                @endif
+
+
 
               <div class="row">
                   <div class="form-group col-md-6">
@@ -251,7 +251,7 @@
                 <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
 
             <button type="submit" class="btn btn-primary mr-2">Soumettre</button> &nbsp;
-            <button class="btn btn-dark mr-2" ><a href="{{route('home_dashboard')}}"  class="text-white">Annuler</a></button>
+            <a href="{{route('home_dashboard')}}"  class="text-white">Annuler</a>
             <br><br>
           </form>
 
@@ -267,4 +267,6 @@
     </div>
 
     </div>
+
+    @include('sweetalert::alert');
 @endsection

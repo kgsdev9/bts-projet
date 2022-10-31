@@ -4,17 +4,16 @@
 
  <!-- Content Wrapper. Contains page content -->
  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <!-- Main content -->
+
     <section class="content">
       <div class="row">
-       
-        
+
+
       </div>
       <!-- /.row -->
       <div class="row">
 
-   
+
         <div class="col-xs-12">
 
           <div class="box">
@@ -23,21 +22,13 @@
             <div class="box-header">
               <h3 class="box-title">MES CANDIDATURES   </h3>
 
-              <div class="box-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                <input type="search" name="search" id="search" placeholder="rechercher.." class="form-control">
 
-                  <div class="input-group-btn">
-                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                  </div>
-                </div>
-              </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
               <table class="table table-hover table-bordered">
 
-             
+
                 <tr>
                   <th>Nom Et Prenom</th>
                   <th>Nationalite</th>
@@ -52,7 +43,7 @@
                 <tbody>
                 @foreach ($candidat_admin as $candidature )
                 <tr>
-                
+
                 <td> {{$candidature->nom}}  {{$candidature->prenom}}</td>
                 <td> {{$candidature->nationnalite}}  </td>
                 <td> {{$candidature->telephone_1}}</td>
@@ -65,9 +56,9 @@
                   @elseif($candidature->etat =='valide')
                   <span class="label label-success">Approuvée</span>
                   @elseif($candidature->etat =='rejet')
-                  <button class="btn btn-danger">Rejetée</button>
+                  <span class="label label-danger">rejetée</span>
                   @endif
-                  
+
                 </td>
                 <td> {{$candidature->user->name}}  </td>
                 <td>
@@ -80,24 +71,24 @@
                 </tbody>
               </table>
 
-         
-            
+
+
 
             </div>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
         </div>
-       
+
       </div>
     </section>
- 
+
 
 
 
     <!-- /.content -->
   </div>
-  
+
 @endsection
 
 @section('extra-js')

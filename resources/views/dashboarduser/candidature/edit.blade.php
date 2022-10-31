@@ -29,9 +29,9 @@
             <div class="card-body">
               <h4 class="card-title">Modifier la  candidature </h4>
               <hr>
-              
-           
-  
+
+
+
               <form class="forms-sample" method="POST"  action="{{route('update_candidature', $candidat->id)}}" enctype="multipart/form-data">
                 @csrf
                   @method('put')
@@ -45,7 +45,7 @@
                     <input type="text" class="form-control" id="exampleInputName1" placeholder="Entrer le prénom" name="prenom" value="{{$candidat->prenom}}">
                   </div>
                 </div>
-  
+
                 <div class="row">
                   <div class="form-group  col-md-6">
                     <label for="exampleInputName1">Date de naissance : @error('date_de_naissance') <small style="color: red">{{$message}}</small> @enderror</label>
@@ -56,12 +56,12 @@
                     <input type="text" class="form-control" id="exampleInputName1" placeholder="Entrer le lieu de naissance" name="lieu_de_naissance"  value="{{$candidat->lieu_de_naissance}}">
                   </div>
                 </div>
-  
+
                 <div class="row">
                   <div class="form-group col-md-6">
                     <label for="exampleSelectGender">Sexe  Actuelle:  {{$candidat->sexe}}  @error('sexe') <small style="color: red">{{$message}}</small> @enderror</label>
                       <select class="form-control" id="exampleSelectGender" name="sexe" >
-                    
+
                         <option value="M">M</option>
                         <option value="F">F</option>
                       </select>
@@ -69,15 +69,15 @@
                     <div class="form-group col-md-6">
                       <label for="exampleSelectGender">Type de candidature Actuelle {{$candidat->statut}} :  @error('statut') <small style="color: red">{{$message}}</small> @enderror</label>
                         <select class="form-control" id="exampleSelectGender" name="statut" >
-                     
-                          <option value="{{$candidat->statut}}">{{$candidat->statut}}</option> 
+
+                          <option value="{{$candidat->statut}}">{{$candidat->statut}}</option>
                           <option value="officielle">Officielle</option>
-                        
+
                         </select>
                       </div>
-  
+
                 </div>
-  
+
                 <div class="row">
                 <div class="form-group  col-md-6">
                   <label for="exampleInputCity1">Nationalité :  @error('nationnalite') <small style="color: red">{{$message}}</small> @enderror</label>
@@ -88,21 +88,21 @@
                   <input type="number" class="form-control" id="exampleInputCity1" placeholder="Entrer votre numéro  de telephone" name="telephone_1" value="{{$candidat->telephone_1}}">
                 </div>
                 </div>
-  
-  
+
+
                 <div class="row">
                   <div class="form-group col-md-6">
                     <label for="exampleSelectGender">Examen: @error('examen') <small style="color: red">{{$message}}</small> @enderror</label>
                       <select class="form-control" id="exampleSelectGender" name="examen">
                           @if($candidat->examen=="bts")
                         <option value="bts">BTS</option>
-                        @endif 
+                        @endif
                       </select>
                     </div>
                     <div class="form-group col-md-6">
                       <label for="exampleSelectGender">Filière Acutelle {{$candidat->filiere}} :  @error('filiere') <small style="color: red">{{$message}}</small> @enderror </label>
                         <select class="form-control" id="exampleSelectGender" name="filiere" >
-                            
+
                           <option value="{{$candidat->filiere}}">{{$candidat->filiere}}</option>
                           <option value="ATPV">ATPV/AGRICULTURE TROPICALE OPTION PRODUCTION VEGETALE</option>
                           <option value="ATPA">ATPA/AGRICULTURE TROPICALE OPTION PRODUCTION ANIMALE</option>
@@ -137,12 +137,12 @@
                            <option value="SEI">SEI/SYSTEMES ELECTRONIQUES ET INFORMATIQUES</option>
                            <option value="TH">TH/TOURISME HOTELLERIE</option>
                            <option value="URBA">URBA/URBANISME</option>
-  
+
                         </select>
                       </div>
-  
+
                 </div>
-  
+
                 <div class="row">
                   <div class="form-group col-md-6">
                     <label for="exampleInputName1 col-md-6">Ecole d'origine :  @error('ecole_d_origine') <small style="color: red">{{$message}}</small> @enderror </label>
@@ -153,9 +153,9 @@
                     <input type="text" class="form-control" id="exampleInputName1" placeholder="Entrer le matricule" name="matricule"  value="{{$candidat->matricule}}">
                   </div>
                 </div>
-  
-  
-  
+
+
+
                 <div class="row">
                   <div class="form-group col-md-6">
                     <label for="exampleSelectGender">Série du  Bac  Actuelle {{$candidat->serie_du_bac}}:  @error('serie_du_bac') <small style="color: red">{{$message}}</small> @enderror </label>
@@ -186,14 +186,14 @@
                           <option value="{{$candidat->mention}}">{{$candidat->mention}}</option>
                           <option value="ASSEZ-BIEN">ASSEZ-BIEN</option>
                           <option value="BIEN">BIEN</option>
-                          
+
                           <option value="TRES BIEN">TRES BIEN</option>
                         </select>
                       </div>
-  
+
                 </div>
-  
-  
+
+
                 <div class="row">
                   <div class="form-group col-md-6">
                     <label for="exampleInputName1 col-md-6">Nombre de points au bac : @error('points_au_bac') <small style="color: red">{{$message}}</small> @enderror </label>
@@ -203,52 +203,52 @@
                     <label for="exampleInputName1 col-md-6">Numero de table  @error('numero_de_table') <small style="color: red">{{$message}}</small> @enderror </label>
                     <input type="text" class="form-control" id="exampleInputName1" placeholder="Entrer le numero de table" name="numero_de_table"  value="{{$candidat->numero_de_table}}">
                   </div>
-  
+
                 </div>
-  
+
                 <div class="row">
                   <div class="form-group  col-md-6">
                     <label for="exampleInputName1">ville de composition :  @error('ville') <small style="color: red">{{$message}}</small> @enderror </label>
                     <input type="text" class="form-control" id="exampleInputName1" placeholder="Entrer la ville  de composiition" name="ville"   value="{{$candidat->ville}}">
                   </div>
-  
+
                   <div class="form-group  col-md-6">
                     <label for="exampleInputName1">Centre de composition :  @error('centre_de_composition') <small style="color: red">{{$message}}</small> @enderror </label>
                     <input type="text" class="form-control" id="exampleInputName1" placeholder="Entrer le centre de composition" name="centre_de_composition"  value="{{$candidat->centre_de_composition}}">
                   </div>
                 </div>
-  
+
                 <div class="row">
                   <div class="form-group  col-md-6">
                     <label for="exampleInputName1">Email : @error('email') <small style="color: red">{{$message}}</small> @enderror  </label>
                     <input type="email" class="form-control" id="exampleInputName1" placeholder="Entrer votre adresse email" name="email"  value="{{$candidat->email}}">
                   </div>
-  
+
                   <div class="form-group col-md-6">
                     <label for="exampleInputCity1">Changer l'image : </label>
-                        
+
                     <input type="file" class="form-control" id="exampleInputCity1" placeholder="Location" name="photo" value="{{asset('uploads/candidature/'.$candidat->photo)}}">
                   </div>
                 </div>
 
-                
-  
+
+
                 <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                
+
                 <button type="submit" class="btn btn-primary mr-2">Enregistrer les Modifications</button>
-                <button  type="reset" class="btn btn-light">Annuler</button>
+                <a href="{{route('home_dashboard')}}"  class="btn btn-warning">Annuler</a>
                 <br><br>
               </form>
 
-          
+
             </div>
           </div>
         </div>
-  
+
 
       </div>
 
-   
+
     </div>
   </div>
 

@@ -88,10 +88,17 @@ Route::middleware([AdminMiddelware::class, 'auth'])->group(function(){
    Route::post('/admin/reserve/{id}' , [AdminController::class, 'afterstatut'])->name('after_statut');
 
 
+   Route::get('/profile/admin', function(){
+    return view('administration.adminprofil.profil');
+   });
+
+
 });
 
 
 // routes pour rechercher
+
+    Route::get('/content/article/{id}',  [ArticlesController::class, 'home'])->name('content.index');
 
 
 Route::get('/search' , [AdminController::class , 'search']);
@@ -117,20 +124,15 @@ Route::get('/home/article/{id}', [ArticlesController::class , 'content_article_h
 
 Route::get('/export/candidature/{id_candidature}',[ExPortController::class,'detail_candidature_pdf'])->name('export.candidature');
 Route::get('/export/excel' , [CandidatureController::class , 'export_excel'])->name('export.excel');
-
-Route::get('/export/pdf' , [ExPortController::class, 'export_pdf'])->name('export.pdf');
-
 Route::any('/index/admin/{id}',  [ExPortController::class, 'detail_admin_cand'])->name('admin.export');
 
+Route::get('/candidature/pdf', [ExPortController::class, 'candidature_pdf'])->name('candidat.pdf');
 
 // modifier  le profil de l'utilisateur foritfy
 
 Route::get('/profile', function(){
     return view('dashboarduser.profil.profil');
 });
-
-
-Route::get('/export/pdf/champs',[ExPortController::class, 'export_pdf_option']);
 
 
 Route::get('/categories', function(){
@@ -144,3 +146,4 @@ Route::get('/admin/profil',  function(){
 });
 
 
+Route::get('/news', [ArticlesController::class, 'news'])->name('news');

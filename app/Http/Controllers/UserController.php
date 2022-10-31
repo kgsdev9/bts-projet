@@ -11,9 +11,9 @@ class UserController extends Controller
 {
     //
     public function home(){
-      $three_article = Article::where('visibilite', 'normale')->take(3)->get();
+      $article= Article::all();
       $twoarticle = Article::where('visibilite', 'populaire')->take(2)->get();
-      return view('welcome',  compact('twoarticle',  'three_article'));
+      return view('welcome',  compact('twoarticle',  'article'));
 
     }
 
@@ -27,11 +27,11 @@ class UserController extends Controller
       $cand_take_cinq = Candidature::where('user_id' , Auth::user()->id)->take(10)->get();
         return view('dashboarduser.index' , compact('candidatures' , 'candidat_accept' , 'candidat_encours' , 'candidat_rejet', 'cand_take_cinq'));
     }
- 
 
 
 
 
-   
+
+
 
 }

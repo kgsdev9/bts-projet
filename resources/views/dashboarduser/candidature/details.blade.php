@@ -4,16 +4,7 @@
 
 @foreach ($candidature as $candidat)
 <div class="content-wrapper">
-  @if ($message=Session::get('success'))
-
-<div class="row alert alert-success">
-
-  {{$message}}
-</div>
-
-@endif
   <br>
-
 <div class="container">
   <div class="col-md-11">
     <div class="row" >
@@ -36,6 +27,15 @@
                      <li> Statut :Candidature  Valididée</li>
                      @elseif($candidat['etat'] =='rejet')
                      <li> Statut :Candidature Rejetée</li>
+
+                        @endif
+
+                        @if(session('danger'))
+
+                            <div class="alert alert-success">
+                                    {{session('danger')}}
+                                </div>
+
 
                         @endif
                </ul>
@@ -209,21 +209,17 @@
         </div>
       </div>
 
-      
+
 
     </div>
   </div>
 
 </div>
-   
-  
+
+
+
 </div>
 
-
 @endforeach
-
-
-
-
 
 @endsection

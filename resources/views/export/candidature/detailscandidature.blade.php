@@ -25,6 +25,14 @@
 
 
             <p class="cs-invoice_number cs-primary_color cs-mb0 cs-f16"><b class="cs-primary_color"> {{$c['nom']}}  {{$c['prenom']}} </b></p>
+                    @if($c->etat=="valide")
+                        <p style="color:green;">Candidature Validée</p>
+                        @elseif($c->etat=="encours")
+                        <p style="color:orange;">Candidature en cours</p>
+                        @elseif($c->etat=="rejet")
+                        <p style="color:red;;">Candidature Refusée</p>
+                        @endif
+
           </div>
           <div class="cs-invoice_right cs-text_right">
             <div class="cs-logo cs-mb5"><img src="{{public_path('uploads/candidature/'.$c['photo'])}}" alt="Logo"  style="height:100px; width:100px; margin-top:-30px;"></div>

@@ -13,11 +13,11 @@ class ExPortController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
- 
+
     public function detail_candidature_pdf($id) {
-        
+
         $details_pdf =  Candidature::where('id',  $id)->get();
-      
+
         $pdf = Pdf::loadView('export.candidature.detailscandidature', [
             'details' =>$details_pdf,
         ]);
@@ -30,19 +30,28 @@ class ExPortController extends Controller
 
         $pdf = Pdf::loadView('export.candidature.detailsexportadmin', [
             'detail' =>$admin_detail,
-        ]);          
+        ]);
 
-        return $pdf->download('candidatureadmin.pdf');  
-        
+        return $pdf->download('candidatureadmin.pdf');
+
     }
 
     public function  export_pdf_option() {
 
         $candidature_option = Candidature::all();
-        
+
         return view('export.candidature.pdfchampsexport', compact('candidature_option')) ;
+    }
 
+    public function candidature_pdf() {
 
+        $candidature = Candidature::all();
+
+        $pdf = Pdf::loadView('export.candidature.pdfrender', [
+            'candidature' =>$candidature
+        ])->setOptions(['defaultFont' => 'Poppins'])->setPaper('A4', 'landscape');
+
+        return $pdf->download('candidatureadmin.pdf');
     }
 
 
@@ -60,7 +69,7 @@ class ExPortController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-   
+
 
     /**
      * Display the specified resource.
@@ -68,7 +77,7 @@ class ExPortController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+
 
     /**
      * Show the form for editing the specified resource.
@@ -85,7 +94,7 @@ class ExPortController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-   
+
 
     /**
      * Remove the specified resource from storage.
@@ -93,5 +102,5 @@ class ExPortController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
- 
+
 }

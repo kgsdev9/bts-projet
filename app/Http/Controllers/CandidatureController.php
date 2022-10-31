@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class CandidatureController extends Controller
@@ -48,7 +49,7 @@ class CandidatureController extends Controller
       "matricule" =>['required','string','max:255', Rule::unique(Candidature::class)] ,
       "serie_du_bac" =>['required','string','max:255'] ,
       "mention" =>['required','string','max:255'] ,
-      "points_au_bac" =>['required',] ,
+      "points_au_bac" =>['required'] ,
       "numero_de_table" =>['required','string','max:255'] ,
       "ville" =>['required','string','max:255'] ,
       "centre_de_composition" =>['required','string','max:255'] ,
@@ -88,7 +89,11 @@ class CandidatureController extends Controller
             $update_id->photo  = $filename;
          }
          $update_id->save();
-        return redirect()->route('ajout_candidature')->with('success',' Candidature soumis avec succès !');
+
+         $msg= 'Candidature enregistrée avec success';
+
+       Alert::success('success', $msg);
+        return redirect()->route('ajout_candidature');
 
 
     }
@@ -101,6 +106,8 @@ class CandidatureController extends Controller
 
         $Candidature = Candidature::where('id',$id_candidature)->get();
 
+        $msg= 'Candidature modifiée  avec success';
+        Alert::success('other', $msg);
         return view('dashboarduser.candidature.details',[
             'candidature'=>$Candidature
         ]);
@@ -198,7 +205,9 @@ class CandidatureController extends Controller
 
          }
          $update_id->update()  ;
-        return redirect()->route('detail_candidature', $update_id->id)->with('success',' Candidature modifier avec succès !');
+
+
+        return redirect()->route('detail_candidature', $update_id->id)->with('danger', 'candidature modifié avec success');
 
 
     }

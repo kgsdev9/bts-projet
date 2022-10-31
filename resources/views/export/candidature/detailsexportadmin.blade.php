@@ -1,226 +1,158 @@
 
 
-@foreach ($detail as $candidat)
+<!DOCTYPE html>
+<html class="no-js" lang="en">
 
-<h1>Informations Sur la Candidature</h1>
+<head>
+  <!-- Meta Tags -->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="ThemeMarch">
+  <!-- Site Title -->
+  <title>TELECHARGER LA  CANDIDATURE</title>
+  <link rel="stylesheet" href="{{public_path('asset/print/css/style.css')}}">
+</head>
+
+<body >
+  <div class="cs-container">
+    <div class="cs-invoice cs-style1">
+
+            @foreach ($detail as  $c )
+      <div class="cs-invoice_in" id="download_section" style="text-transform:uppercase;">
+        <div class="cs-invoice_head cs-type1 cs-mb25">
+          <div class="cs-invoice_left">
 
 
-
-<div class="row">
-  <div class="col-lg-10 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-      <div class="row">
-        <div class="col-md-4" style="justify-content: center;padding-left:100px">
-             <img width="100px" height="100px" src="" class="img-fluid " alt="" srcset="">
+            <p class="cs-invoice_number cs-primary_color cs-mb0 cs-f16"><b class="cs-primary_color"> {{$c['nom']}}  {{$c['prenom']}} </b></p>
+          </div>
+          <div class="cs-invoice_right cs-text_right">
+            <div class="cs-logo cs-mb5"><img src="{{public_path('uploads/candidature/'.$c['photo'])}}" alt="Logo"  style="height:100px; width:100px; margin-top:-30px;"></div>
+          </div>
+        </div>
+        <div class="cs-invoice_head cs-mb10">
+          <div class="cs-invoice_left">
+            <b class="cs-primary_color">FICHE DE CANDIDATURE</b>
+            <p>
+                TELEPHONE :  {{ $c['telephone_1']}} <br>
+             EMAIL :{{ $c['email']}} <br>
+             SEXE DU CANDIDAT :  {{ $c['sexe']}}
+            </p>
+          </div>
 
         </div>
-        <div class="col-md-4">
-           <ul style="list-style: none ; font-weight:500">
-                 <li>  Crée le : {{$candidat['created_at']}}</li>
-                 <li> Téléphone : {{$candidat['telephone_1']}}</li>
-                 <li> Adresse mail  : {{$candidat['email']}}</li>
-                 @if($candidat['etat'] == 'encours')
-                 <li> Statut :En Attente De Validation</li>
-                 @elseif($candidat['etat'] =='valide')
-                 <li> Statut :Candidature En Cours De Valididée</li>
-                 @elseif($candidat['etat'] =='rejet')
-                 <li> Statut :Candidature Rejetée</li>
+        <div class="cs-table cs-style1">
+          <div class="cs-round_border">
+            <div class="cs-table_responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="cs-width_6 cs-semi_bold cs-primary_color cs-focus_bg cs-f16" colspan="2"><b class="cs-primary_color">Informations Sur La Candidature </b> </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="cs-width_6"><b class="cs-primary_color">NATIONNALITE: </b>{{$c['nationnalite']}}</td>
+                    <td class="cs-width_6"><b class="cs-primary_color">DATE DE NAISSANCE: </b>{{$c['date_de_naissance']}}</td>
+                  </tr>
+                  <tr>
+                    <td class="cs-width_6"><b class="cs-primary_color">LIEU DE NAISSANCE: </b>{{$c['lieu_de_naissance']}}</td>
+                    <td class="cs-width_6"><b class="cs-primary_color">EXAMEN: </b>{{$c['examen']}}</td>
+                  </tr>
 
-                    @endif
-           </ul>
+                  <tr>
+                    <td class="cs-width_6"><b class="cs-primary_color">STATUT: </b>{{$c['statut']}}</td>
+                    <td class="cs-width_6"><b class="cs-primary_color">FILIERE: </b>{{$c['filiere']}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <table>
+                <thead>
+                  <tr>
+                    <th class="cs-semi_bold cs-primary_color cs-focus_bg cs-f16 cs-border_top" colspan="4"><b class="cs-primary_color">Informations Complementaires </b></th>
+                  </tr>
+                  <tr>
+                    <td class="cs-width_3 cs-primary_color cs-semi_bold"> <b class="cs-primary_color">ECOLE D'ORIGINE</b></td>
+                    <td class="cs-width_3 cs-primary_color cs-semi_bold"><b class="cs-primary_color"> SERIE DU BAC </b></td>
+                    <td class="cs-width_3 cs-primary_color cs-semi_bold"><b class="cs-primary_color"> MATRICULE</b></td>
+                    <td class="cs-width_3 cs-primary_color cs-semi_bold cs-text_right"><b class="cs-primary_color"> POINT DU BAC</b></td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="cs-width_3">{{$c['ecole_d_origine']}}</td>
+                    <td class="cs-width_3">{{$c['serie_du_bac']}}</td>
+                    <td class="cs-width_3">{{$c['matricule']}}</td>
+                    <td class="cs-width_3 cs-text_right">{{$c['points_au_bac']}}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+
+              <table>
+                <thead>
+                  <tr>
+                    <th class="cs-semi_bold cs-primary_color cs-focus_bg cs-f16 cs-border_top" colspan="4"><b class="cs-primary_color">D'AUTRES INFORMATIONS </b></th>
+                  </tr>
+                  <tr>
+                    <td class="cs-width_3 cs-primary_color cs-semi_bold"> <b class="cs-primary_color">MENTION</b></td>
+                    <td class="cs-width_3 cs-primary_color cs-semi_bold"><b class="cs-primary_color"> CENTRE BAC</b></td>
+                    <td class="cs-width_3 cs-primary_color cs-semi_bold"><b class="cs-primary_color"> N° TABLE</b></td>
+                    <td class="cs-width_3 cs-primary_color cs-semi_bold cs-text_right"><b class="cs-primary_color">VILLE</b></td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="cs-width_3">{{$c['mention']}}</td>
+                    <td class="cs-width_3">{{$c['centre_de_composition']}}</td>
+                    <td class="cs-width_3">{{$c['numero_de_table']}}</td>
+                    <td class="cs-width_3 cs-text_right">{{$c['ville']}}</td>
+                  </tr>
+
+
+                </tbody>
+              </table>
+
+
+              <table>
+                <thead>
+                  <tr>
+                    <th class="cs-semi_bold cs-primary_color cs-focus_bg cs-f16 cs-border_top" colspan="4"><b class="cs-primary_color">INFORMATIONS ADMINISTRATEURS </b></th>
+                  </tr>
+                  <tr>
+                    <td class="cs-width_3 cs-primary_color cs-semi_bold"> <b class="cs-primary_color">ID PERMANENT</b></td>
+                    <td class="cs-width_3 cs-primary_color cs-semi_bold"><b class="cs-primary_color"> NUMERO BTS</b></td>
+                    <td class="cs-width_3 cs-primary_color cs-semi_bold"><b class="cs-primary_color"> N° TABLE</b></td>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="cs-width_3">{{$c['id_permanent']}}</td>
+                    <td class="cs-width_3">{{$c['numero_bts']}}</td>
+                    <td class="cs-width_3 cs-text_right">{{$c['resultat']}}</td>
+
+                  </tr>
+
+
+                </tbody>
+              </table>
+
+            </div>
+
+          </div>
+
         </div>
-        <div class="col-md-4">
-          
-        </div>
+
       </div>
-        <div class="table-responsive pt-3">
-          <table class="table table-striped" id="example">
 
-         <tbody>
-            <tr>
-              <td>
-               id
-              </td>
-              <td>
-                {{$candidat['id']}}
-              </td>
+      @endforeach
 
-            </tr>
-
-            <tr>
-                <td>
-                 Nom & prénoms
-                </td>
-                <td>
-                  {{$candidat['nom']}}   {{$candidat['prenom']}}
-                </td>
-
-            </tr>
-            <tr>
-                <td>
-                sexe
-                </td>
-                <td>
-                  {{$candidat['sexe']}}
-                </td>
-
-            </tr>
-
-            <tr>
-                <td>
-                  Date de naissance
-                </td>
-                <td>
-                  {{$candidat['date_de_naissance']}}
-                </td>
-
-
-            </tr>
-            <tr>
-                <td>
-                  Lieu de naissance
-                </td>
-                <td>
-                  {{$candidat['lieu_de_naissance']}}
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                  Nationalité
-                </td>
-                <td>
-                  {{$candidat['nationnalite']}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                  Examen
-                </td>
-                <td>
-                  {{$candidat['examen']}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                 Filière
-                </td>
-                <td>
-                  {{$candidat['filiere']}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                 Candidature
-                </td>
-                <td>
-                  {{$candidat['statut']}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                 Ecole d'origine
-                </td>
-                <td>
-                  {{$candidat['ecole_d_origine']}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                Serie du  bac
-                </td>
-                <td>
-                  {{$candidat['serie_du_bac']}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                Matricule du bac
-                </td>
-                <td>
-                  {{$candidat['matricule']}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                  Nombres de points au bac
-                </td>
-                <td>
-                  {{$candidat['points_au_bac']}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                Mention
-                </td>
-                <td>
-                  {{$candidat['mention']}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                Centre de composition
-                </td>
-                <td>
-                  {{$candidat['centre_de_composition']}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                Numéro de table
-                </td>
-                <td>
-                  {{$candidat['numero_de_table']}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-              Ville de composition
-                </td>
-                <td>
-                  {{$candidat['ville']}}
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-              Identifiants Permanant Par Defaut
-                </td>
-                <td>
-                  {{$candidat['id_permanent']}}
-                </td>
-            </tr>
-
-            <tr>
-              <td>
-            Numero BTS Par Defaut
-              </td>
-              <td>
-                {{$candidat['numero_bts']}}
-              </td>
-          </tr>
-
-          <tr>
-            <td>
-         Resultat Examen  BTS
-            </td>
-            <td>
-              {{$candidat['resultat']}}
-            </td>
-        </tr>
-
-
-          </tbody>
-
-          </table>
-        </div>
+      <div class="cs-invoice_btns cs-hide_print">
+        <p>CANDIDATURE EMISE PAR L'UTILISATEUR {{Auth::user()->name}} à  {{$c['created_at']}}</p>
       </div>
     </div>
   </div>
-</div>
-</div>
 
-
-@endforeach
-
+</body>
+</html>

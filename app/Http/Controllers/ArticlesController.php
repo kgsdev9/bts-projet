@@ -16,6 +16,20 @@ class ArticlesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+        public function news() {
+            $article = Article::paginate(9);
+            return view('publication.news', compact('article'));
+        }
+
+        public function home($id) {
+
+            $article = Article::find($id);
+
+            return view('publication.content', compact('article'));
+
+        }
+
     public function index()
     {
         return view('articles.index');
@@ -30,7 +44,7 @@ class ArticlesController extends Controller
     {
         $categories = Category::all();
       return view('administration.gestionarticle.add', compact('categories'));
-    } 
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -39,10 +53,10 @@ class ArticlesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StoreArticleRequest $request)
-    {       
+    {
 
-        
-    
+
+
         $ceate_articles = new Article();
         $ceate_articles->name_article = $request->input('title_article');
         $ceate_articles->category_id = $request->input('cate_id');
@@ -54,16 +68,16 @@ class ArticlesController extends Controller
 
                 $file = $request->file('image');
                 $extention = $file->getClientOriginalExtension();
-                $filename  = time(). '.' .$extention ; 
+                $filename  = time(). '.' .$extention ;
                 $file->move('uploads/articles', $filename);
                 $ceate_articles->image = $filename;
-        }     
+        }
         $ceate_articles->save();
-        
+
          return redirect()->route('liste.articles')->with('message', 'Votre article a été publié avec success');
 
 
-         
+
     }
 
     /**
@@ -104,7 +118,7 @@ class ArticlesController extends Controller
             $update_article =Article::find($id);
             $update_article->name_article = $request->input('title_article');
             $update_article->description =  $request->input('content_article');
-            $update_article->visibilite  = $request->input('visibilite');  
+            $update_article->visibilite  = $request->input('visibilite');
             $update_article->update();
             return redirect()->route('liste.articles')->with('sucees' , 'Votre Article a été modifié  avec succes');
     }
@@ -136,10 +150,10 @@ class ArticlesController extends Controller
 
 
         return view('home_article.article', compact('content_article'));
-        
 
-  
-  
+
+
+
       }
 
 }

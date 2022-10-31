@@ -10,8 +10,20 @@
                     <form action="{{route('register')}}" id="register-form" class="white-popup-block" method="POST">
                         @csrf
                         <div class="col-md-4 login-social">
-                        <h4>NOUS SOMMES HEUREUX DE VOUS REVOIR !</h4>
-                          <p>Institut Roosvelet vous offre une multiide de possibilite</p>
+
+
+                            @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
+
                         </div>
 
                         <div class="col-md-8 login-custom">

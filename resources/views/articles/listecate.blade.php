@@ -1,29 +1,100 @@
-@extends('dashboard.admin.users.admin.layoutadmin')
+@extends('administration.master.index')
 
 @section('admin')
 
-<div class="main-panel">
+
+
+  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
- 
-    @foreach($category as $cate)
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+       Liste Des Articles
 
-<div class="card">
-<div class="card-header">
-{{  $cate->visibilite }}
-</div>
-<div class="card-body">
-<div class="row">
-<div class="col-md-10">
-    <h5 class="card-title"> Nom : {{  $cate->category_name}}</h5>
-  <h5 class="card-title">{{$cate->description_cate}}</h5>
-</div>
-</div>
-<p class="card-text"> {{$cate->created_at}} </p>
-<a href="{{route('cate.edit' , $cate->id)}}" class="btn btn-dark">Modfier La Categogie</a>
-<a href="{{route('cate.destroy' ,$cate ->id)}}" class="btn btn-danger" onclick="return confirm('Voulez vous supprimer Cet article ?')">Supprimer La Categorie</a>
-</div>
-</div>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>Accueil</a></li>
+        <li class="active">Article</li>
+      </ol>
+    </section>
 
- @endforeach
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+      <section class="content">
+      <div class="row">
+        <div class="col-md-3">
+          <a href="#" class="btn btn-primary btn-block margin-bottom">Menu Article</a>
+
+            @include('administration.gestionarticle.slider-bar-article')
+
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Liste Des Categories</h3>
+
+
+                <!-- /.btn-group -->
+                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+
+                <!-- /.pull-right -->
+              </div>
+              <div class="table-responsive mailbox-messages">
+                <table class="table table-hover table-striped">
+                  <tbody>
+                            @foreach (  $category as $cate )
+                 <tr>
+                            <td><input type="checkbox"></td>
+                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
+                    <td class="mailbox-name">{{$cate->category_name}}</td>
+                    <td class="mailbox-subject"><b></b> - {{Str::limit( $cate->description_cate, 30)}}
+                    </td>
+                    <td class="mailbox-attachment"></td>
+                    <td class="mailbox-date">{{$cate->created_at}}</td>
+                  </tr>
+                            @endforeach
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  </tbody>
+                </table>
+                <!-- /.table -->
+              </div>
+              <!-- /.mail-box-messages -->
+            </div>
+            <!-- /.box-body -->
+
+          </div>
+          <!-- /. box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+
+
+
+
 
 @endsection

@@ -147,10 +147,20 @@
         <i class="fa fa-circle text-success"></i> Connecté
         </div>
       </div>
-      
+
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Menu Principale</li>
+        <li >
+            <a href="{{url('/')}}">
+              <i class="fa fa-dashboard"></i> <span>Retoruner à L'accueil</span>
+              <span class="pull-right-container">
+
+              </span>
+            </a>
+
+          </li>
+
         <li >
           <a href="{{route('home_dashboard')}}">
             <i class="fa fa-dashboard"></i> <span>Tableau de bord</span>
@@ -186,8 +196,8 @@
           </ul>
         </li>
         <li class="treeview">
-          
-          
+
+
         </li>
         <li><a href="#"><i class="fa fa-book"></i> <span>Acutalites</span></a></li>
         <li class="treeview">

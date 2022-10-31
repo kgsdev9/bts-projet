@@ -59,7 +59,7 @@
                             </li>
                             <li>
                                 <i class="fas fa-phone"></i>
-                                +225 40856677
+                                +225  07 08 19 23 82
                             </li>
                         </ul>
                     </div>
@@ -75,12 +75,21 @@
                 </div>
                             @else
                             <div class="user-login text-right col-md-4">
-                    <a class="" href="{{route('home_dashboard')}}">
+                    @if(Auth::user()->role=="administrateur")
+                    <a  href="{{url('/admin/index')}}">
+                        @elseif(Auth::user()->role=="utilisateur")
+                        <a  href="{{route('home_dashboard')}}">
+                        @endif
                         <i class="fas fa-user"></i>Tableau de bord
                     </a>
-                    <a  class="" href="">
+                    <a  href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="fas fa-logt"></i>Deconnexion
                     </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+
                 </div>
 
                         @endguest
@@ -130,7 +139,7 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="/">
                         <img src="ressources/img/logo.png" class="logo" alt="Logo" width="140px" class="img-fluid">
                     </a>
                 </div>
@@ -140,91 +149,24 @@
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav navbar-right" data-in="#" data-out="#">
                         <li >
-                            <a href="#" class="dropdown-toggle active" data-toggle="dropdown" >Accueil</a>
+                            <a href="{{url('/')}}" class="dropdown-toggle active" data-toggle="dropdown" >Accueil</a>
 
                         </li>
-                        <li class="dropdown megamenu-fw">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Nos Filieres</a>
-                            <ul class="dropdown-menu megamenu-content" role="menu">
-                                <li>
-                                    <div class="row">
-                                        <div class="col-menu col-md-3">
-                                            <h6 class="title">Gallery</h6>
-                                            <div class="content">
-                                                <ul class="menu-col">
-                                                    <li><a href="gallery-2-colum.html">Gallery Two Colum</a></li>
-                                                    <li><a href="gallery-3-colum.html">Gallery Three Colum</a></li>
-                                                    <li><a href="gallery-4-colum.html">Gallery Four Colum</a></li>
-                                                    <li><a href="gallery-6-colum.html">Gallery Six Colum</a></li>
-                                                </ul>
-                                            </div>
-                                        </div><!-- end col-3 -->
-                                        <div class="col-menu col-md-3">
-                                            <h6 class="title">Advisor</h6>
-                                            <div class="content">
-                                                <ul class="menu-col">
-                                                    <li><a href="advisor-carousel.html">Advisor Carousel</a></li>
-                                                    <li><a href="advisor-2-colum.html">Advisor Two Colum</a></li>
-                                                    <li><a href="advisor-3-colum.html">Advisor Three Colum</a></li>
-                                                    <li><a href="advisor-carousel-2.html">Advisor Carousel Two</a></li>
-                                                </ul>
-                                            </div>
-                                        </div><!-- end col-3 -->
-                                        <div class="col-menu col-md-3">
-                                            <h6 class="title">User Pages</h6>
-                                            <div class="content">
-                                                <ul class="menu-col">
-                                                    <li><a href="profile.html">Profile</a></li>
-                                                    <li><a href="edit-profile.html">Edit Profile</a></li>
-                                                    <li><a href="login.html">login</a></li>
-                                                    <li><a href="register.html">register</a></li>
-                                                </ul>
-                                            </div>
-                                        </div><!-- end col-3 -->
-                                        <div class="col-menu col-md-3">
-                                            <h6 class="title">Other Pages</h6>
-                                            <div class="content">
-                                                <ul class="menu-col">
-                                                    <li><a href="about-us.html">About Us</a></li>
-                                                    <li><a href="faq.html">Faq</a></li>
-                                                    <li><a href="pricing-table.html">Pricing Table</a></li>
-                                                    <li><a href="contact.html">Contact</a></li>
-                                                    <li><a href="404.html">Error Page</a></li>
-                                                </ul>
-                                            </div>
-                                        </div><!-- end col-3 -->
-                                    </div><!-- end row -->
-                                </li>
-                            </ul>
-                        </li>
+
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle active" data-toggle="dropdown" >Formations</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="courses.html">Courses Carousel One</a></li>
-                                <li><a href="courses-2.html">Courses Grid One</a></li>
-                                <li><a href="courses-3.html">Courses Grid Two</a></li>
-                                <li><a href="courses-4.html">Courses Carousel Two</a></li>
-                                <li><a href="course-details.html">Course Details</a></li>
-                            </ul>
+                            <a href="#" >Nos Filieres</a>
+
                         </li>
+
+
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle active" data-toggle="dropdown" >Actualites</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="teachers.html">Advisor</a></li>
-                                <li><a href="teachers-details.html">Advisor Details</a></li>
-                            </ul>
+                            <a href="{{route('news')}}" >Actualites</a>
+
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle active" data-toggle="dropdown" >Metiers</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="event.html">Event Mixed Colum</a></li>
-                                <li><a href="event-2.html">Event Grid Colum</a></li>
-                                <li><a href="event-3.html">Event Carousel</a></li>
-                            </ul>
-                        </li>
+
 
                         <li>
-                            <a href="contact.html">contactez-Nous</a>
+                            <a href="#">contactez-Nous</a>
                         </li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
@@ -236,19 +178,29 @@
                 <div class="widget">
                     <h4 class="title">Institut Roosvelt</h4>
                     <div class="profile-thumb">
-                        <img src="ressources/img/800x800.png" alt="Profile">
+                        <img src="{{asset('ressources/img/logo.png')}}" alt="Profile">
                     </div>
                     <ul>
-                        <li><a href="#">Connexion</a></li>
-                        <li><a href="#">Inscription</a></li>
-                        <li><a href="#">Contactez-Nous</a></li>
-                        <li><a href="#">A propos</a></li>
-                        <li><a href="#"></a></li>
+                                    @guest
+                                    <li><a href="{{ route('login') }}">Connexion</a></li>
+                                    <li><a href="{{ route('register') }}">Inscription</a></li>
+                                        @else
+                                        @if(Auth::user()->role=="administrateur")
+                                        <li><a href="{{ url('/admin/index') }}">Tableau de bord</a></li>
+                                        <li><a href="/">Contactez-Nous</a></li>
+                                            @elseif(Auth::user()->role=="utilisateur")
+                                            <li><a href="{{ route('home_dashboard') }}">Tableau de bord</a></li>
+                                            <li><a href="/">Contactez-Nous</a></li>
+                                            @endif
+                                    @endguest
+
+
+
                     </ul>
                 </div>
 
                 <div class="widget social">
-                    <h4 class="title">Connexion Via </h4>
+                    <h4 class="title">RESEAUX SOCIAUX </h4>
                     <ul class="link">
                         <li class="facebook"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                         <li class="twitter"><a href="#"><i class="fab fa-twitter"></i></a></li>
@@ -272,29 +224,16 @@
         <div class="col-md-4 login-social">
             <h4>Se Connecer Via </h4>
             <ul>
-                <li class="facebook">
-                    <a href="#">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                </li>
-                <li class="twitter">
-                    <a href="#">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </li>
-                <li class="linkedin">
-                    <a href="#">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                </li>
-                <br>
-                    @error('email')
-                        <small class="text-danger">{{$message}}</small>
-                    @enderror
+                @if ($errors->any())
+                <div   div class="alert alert-danger">
+                 <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+                    @endif
 
-                        @error('password')
-                        <small class="text-danger">{{$message}}</small>
-                        @enderror
 
             </ul>
         </div>
@@ -310,7 +249,7 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="form-group">
-                        <input class="form-control" placeholder="Mot de passe*" type="text" name="password">
+                        <input class="form-control" placeholder="Mot de passe*" type="password" name="password">
                     </div>
                 </div>
             </div>
@@ -341,21 +280,18 @@
         <div class="col-md-4 login-social">
             <h4>S'inscrire Via</h4>
             <ul>
-                <li class="facebook">
-                    <a href="#">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                </li>
-                <li class="twitter">
-                    <a href="#">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </li>
-                <li class="linkedin">
-                    <a href="#">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                </li>
+
+               @if ($errors->any())
+            <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+            </div>
+    @endif
+
+
             </ul>
         </div>
         <div class="col-md-8 login-custom">
@@ -385,7 +321,7 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="form-group">
-                        <input class="form-control" placeholder="Confirmer Votre Mot De Passe*" type="text" name="password_confirmation">
+                        <input class="form-control" placeholder="Confirmer Votre Mot De Passe*" type="password" name="password_confirmation">
                     </div>
                 </div>
             </div>
@@ -409,17 +345,18 @@
                 <div class="f-items">
                     <div class="col-md-4 item">
                         <div class="f-item">
-                            <img src="assets/img/logo-light.png" alt="Logo">
+                            <img src="{{asset('ressources/img/logo.png')}}" alt="Logo">
                             <p>
-                                Excellence decisively nay man yet impression for contrasted remarkably. There spoke happy for you are out. Fertile how old address did showing because sitting replied six. Had arose guest visit going off child she new.
+                                L’Institut Supérieur Polytechnique Roosevelt (ISPR) L’Institut Supérieur ISPR est un Etablissement d’Enseignement Supérieur animé par des Enseignants des Universités et Grandes Ecoles en collaboration avec des professionnels. ISPR est situé à Abidjan dans la commune d’abobo akekoi non loin de l’égliseCatholique Saint-Marc..
+
                             </p>
                             <p class="text-italic">
-                                Please write your email and get our amazing updates, news and support
+
                             </p>
                             <div class="subscribe">
                                 <form action="#">
                                     <div class="input-group stylish-input-group">
-                                        <input type="email" placeholder="Enter your e-mail here" class="form-control" name="email">
+                                        <input type="email" placeholder="Entrer votre email" class="form-control" name="email">
                                         <button type="submit">
                                             <i class="fa fa-paper-plane"></i>
                                         </button>
@@ -430,79 +367,73 @@
                     </div>
                     <div class="col-md-2 col-sm-6 item">
                         <div class="f-item link">
-                            <h4>Links</h4>
+                            <h4>Liens Utiles</h4>
                             <ul>
                                 <li>
-                                    <a href="#">Courses</a>
+                                    <a href="#">Cours</a>
                                 </li>
                                 <li>
-                                    <a href="#">Event</a>
+                                    <a href="#">Evenements</a>
                                 </li>
                                 <li>
-                                    <a href="#">Gallery</a>
+                                    <a href="#">Nos Eleves</a>
                                 </li>
                                 <li>
-                                    <a href="#">Faqs</a>
+                                    <a href="#">Nos Enseignants</a>
                                 </li>
                                 <li>
-                                    <a href="#">Teachers</a>
+                                    <a href="#">Nos Formations</a>
                                 </li>
-                                <li>
-                                    <a href="#">Contact</a>
-                                </li>
+
                             </ul>
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-6 item">
                         <div class="f-item link">
-                            <h4>Support</h4>
+                            <h4>Filieres</h4>
                             <ul>
                                 <li>
-                                    <a href="#">Documentation</a>
+                                    <a href="#">Filiere Industrielle</a>
                                 </li>
                                 <li>
-                                    <a href="#">Forums</a>
+                                    <a href="#">FIliere Tertiaire</a>
                                 </li>
                                 <li>
-                                    <a href="#">Language Packs</a>
+                                    <a href="#">Postuler au bts</a>
                                 </li>
                                 <li>
-                                    <a href="#">Release Status</a>
+                                    <a href="#">Conditions D'admissions</a>
                                 </li>
                                 <li>
-                                    <a href="#">LearnPress</a>
+                                    <a href="#">Cours en ligne</a>
                                 </li>
-                                <li>
-                                    <a href="#">Feedback</a>
-                                </li>
+
                             </ul>
                         </div>
                     </div>
                     <div class="col-md-4 item">
                         <div class="f-item address">
-                            <h4>Address</h4>
+                            <h4>Adresse</h4>
                             <ul>
                                 <li>
                                     <i class="fas fa-envelope"></i>
-                                    <p>Email <span><a href="mailto:support@validtheme.com">support@validtheme.com</a></span></p>
+                                    <p>Email <span><a href="mailto:support@validtheme.com">institutroosvelet.com</a></span></p>
                                 </li>
                                 <li>
                                     <i class="fas fa-map"></i>
-                                    <p>Office <span>123 6th St. Melbourne, FL 32904</span></p>
+                                    <p>Emplacement <span> ABOBO SAINT MARC PRES DE L'EGLISE CATHOLIQUE</span></p>
                                 </li>
                             </ul>
                             <div class="opening-info">
-                                <h5>Opening Hours</h5>
+                                <h5>HORAIRE D'OUVERTURE</h5>
                                 <ul>
-                                    <li> <span> Mon - Tues :  </span>
-                                      <div class="pull-right"> 6.00 am - 10.00 pm </div>
+                                    <li> <span> Lundi  -Vendredi:  </span>
+                                      <div class="pull-right">8H  - 18 H </div>
                                     </li>
-                                    <li> <span> Wednes - Thurs :</span>
-                                      <div class="pull-right"> 8.00 am - 6.00 pm </div>
+                                    <li> <span> Samedi  - Dimanche :</span>
+                                      <div class="pull-right"> fermé </div>
                                     </li>
-                                    <li> <span> Sun : </span>
-                                      <div class="pull-right closed"> Closed </div>
-                                    </li>
+
                                 </ul>
                             </div>
                         </div>
@@ -516,12 +447,12 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="col-md-6">
-                            <p>&copy; Copyright 2019. All Rights Reserved by <a href="#">validthemes</a></p>
+                            <p>&copy; Tous Droits reservés à Insittut roosvelet</a></p>
                         </div>
                         <div class="col-md-6 text-right link">
                             <ul>
                                 <li>
-                                    <a href="#">Terms of user</a>
+                                    <a href="#">INSTITUT ROOSVELET</a>
                                 </li>
                                 <li>
                                     <a href="#">License</a>
@@ -557,6 +488,9 @@
     <script src="{{asset('ressources/js/jquery.nice-select.min.js')}}"></script>
     <script src="{{asset('ressources/js/bootsnav.js')}}"></script>
     <script src="{{asset('ressources/js/main.js')}}"></script>
+
+
+
 
 </body>
 </html>

@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <!-- Start Login 
+    <!-- Start Login
     ============================================= -->
     <div class="login-area default-padding">
         <div class="container">
@@ -12,18 +12,17 @@
                     <form action="{{route('login')}}" id="login-form" class="white-popup-block" method="POST">
                         @csrf
                         <div class="col-md-4 login-social">
-                            <h4>NOUS SOMMES HEUREUX DE VOUS REVOIR !</h4>
-                          <p>Institut Roosvelet vous offre une multiide de possibilite</p>
 
-                                    @error('email')
-                                
-                                        <small style="color:red;">{{$message}}</small>
-                                    @enderror
+                            @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
-                                    @error('password')
-                                
-                                <small style="color:red;">{{$message}}</small>
-                            @enderror
 
                         </div>
                         <div class="col-md-8 login-custom">
@@ -31,7 +30,7 @@
                             <div class="col-md-12">
                                 <div class="row">
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Votre Adreesse E-mail*" type="email">
+                                        <input class="form-control" placeholder="Votre Adreesse E-mail*" type="email" name="email">
                                     </div>
                                 </div>
                             </div>
@@ -44,7 +43,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
 
 
                             <div class="col-md-12">
@@ -56,11 +55,11 @@
                             <div class="col-md-12">
                                 <div class="row">
                                     <button type="submit">
-                                       S'inscrire
+                                      Se Connecter
                                     </button>
                                 </div>
                             </div>
-                            <p class="link-bottom">Vous avez deja un compte  ? <a href="#">Connectez-vous !</a></p>
+                            <p class="link-bottom">Vous n'avez pas de  compte  ? <a href="{{ route('register') }}">Inscrivez-vous !</a></p>
                         </div>
                     </form>
                 </div>

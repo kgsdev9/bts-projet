@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
@@ -19,7 +20,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(12);
 
         return view('administration.userlist.index' , compact('users'));
     }
@@ -28,7 +29,7 @@ class AdminController extends Controller
     public function edit_user($id) {
 
         $edit_user = User::where('id' , $id)->first();
-            return view('gestion_utilisateur.edit', compact('edit_user'));
+            return view('administration.userlist.edit', compact('edit_user'));
     }
 
     public function update_user(Request $request, $id) {
@@ -39,7 +40,9 @@ class AdminController extends Controller
         $update_user->email  =  $request->input('email');
         $update_user->role  =  $request->input('role');
         $update_user->update();
-        return   redirect()->route('edit.user' , $update_user->id)->with('message' , 'Votre profil a été modifé avec succes');
+        $msg= 'Modification Effectué avec success';
+        Alert::success('success', $msg);
+        return   redirect()->route('edit.user' , $update_user->id);
 
     }
 
@@ -127,11 +130,11 @@ class AdminController extends Controller
             $file = $request->file('photo');
             $extention  = $file->getClientOriginalExtension();
             $filename = time().'.'.$extention;
-            $file->move('uploads/candidature/admin/' , $filename);
+            $file->move('uploads/candidature/' , $filename);
             $update_id->photo  = $filename;
          }
          $update_id->save();
-         return redirect()->route('admin.create')->with('admin-success',' Candidature soumis avec succès !');
+         return redirect()->route('admin.create')->with('admin-success',' Candidature soumise avec succès !');
 
 
     }
@@ -228,10 +231,10 @@ class AdminController extends Controller
               $candidat->centre_de_composition = $request->input('centre_de_composition');
               $candidat->email = $request->input('email');
 
-//20 champs
+
               $candidat->update();
 
-             return redirect()->route('detail.admin', $request->input('id_candidature'));
+             return redirect()->route('detail.admin', $request->input('id_candidature'))->with('edit', 'candidature modifiée avec sucess');
 
     }
 
@@ -268,26 +271,24 @@ class AdminController extends Controller
 
     public function afterstatut(Request $request , $id) {
 
-
         $lastinput = Candidature::find($id);
         $lastinput->etat  = $request->input('confirm');  //champs1
         $lastinput->numero_bts = $request->input('numero_bts');//champs2
         $lastinput->id_permanent = $request->input('id_permanent'); // champs3
         $lastinput->resultat = $request->input('resultat_bts'); //champs4
-
         $lastinput->update();
-        return redirect()->route('all.actions');
+        $msg= 'Etat de la candidature modifiée avec success';
+        Alert::success('success', $msg);
+        return redirect()->route('admin.reserve', $lastinput->id);
     }
 
 
     public function voir($id_candidature) {
 
 
-       $find  = Candidature::find($id_candidature);
+       $edit_user  = Candidature::find($id_candidature);
 
-
-
-        return view('dashboard.admin.users.admininput', compact('find'));
+        return view('administration.candidatureuser.edite', compact('edit_user'));
 
     }
 
@@ -318,13 +319,15 @@ class AdminController extends Controller
 
         $output   = "" ;
 
-        $candidature =  Candidature::where('id' , 'LIKE' , '%'.$request->search. '%')
+        $candidature =  Candidature::where('nom' , 'LIKE' , '%'.$request->search. '%')
         ->orwhere('nom', 'LIKE', '%'.$request->search. '%')
         ->orwhere('prenom', 'LIKE', '%'.$request->search. '%')
-        ->orwhere('date_de_naissance', 'LIKE', '%'.$request->search. '%')
+        ->orwhere('nationnalite', 'LIKE', '%'.$request->search. '%')
+        ->orwhere('telephone_1', 'LIKE', '%'.$request->search. '%')
         ->orwhere('statut', 'LIKE', '%'.$request->search. '%')
-        ->orwhere('filiere', 'LIKE', '%'.$request->search. '%')
-        ->orwhere('etat', 'LIKE', '%'.$request->search. '%')->get();
+        ->orwhere('matricule', 'LIKE', '%'.$request->search. '%')
+        ->orwhere('examen', 'LIKE', '%'.$request->examen. '%')
+        ->orwhere('filiere', 'LIKE', '%'.$request->examen. '%')->get();
 
 
         foreach($candidature as $candidature){
@@ -332,18 +335,19 @@ class AdminController extends Controller
             $output .=
 
                 '<tr>
-                <td>  ' .$candidature->id.'</td>
                 <td>  ' .$candidature->nom.'</td>
                 <td>  ' .$candidature->prenom.'</td>
-                <td>  ' .$candidature->date_de_naissance.'</td>
+                <td>  ' .$candidature->nationnalite.'</td>
+                <td>  ' .$candidature->telephone_1.'</td>
                 <td>  ' .$candidature->statut.'</td>
-                <td>  ' .$candidature->filiere.'</td>
-                <td >  ' .$candidature->etat.'</td>
+                <td >  ' .$candidature->matricule.'</td>
+                <td >  ' .$candidature->examen.'</td>
+                <td >  ' .$candidature->filiere.'</td>
                 <td>
                 '.'
+                <a href="/admin/candidature/detaisl/'  .$candidature->id.' " class="btn btn-primary">'.'Details</a>
+                <a href="/admin/newinput/'  .$candidature->id.' " class="btn btn-warning">'.'Changer L\'Etat</a>
 
-                <a href="/admin/newinput/'  .$candidature->id.' " class="btn btn-dark">'.'Changer L\'Etat</a>
-                <a href="/admin/candidature/detaisl/'  .$candidature->id.' " class="btn btn-warning">'.'Details</a>
 
                 '.'</td>
 

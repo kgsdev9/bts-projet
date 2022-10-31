@@ -3,8 +3,8 @@
 
 
 @foreach ($candidature as $candidat)
-<div class="content-wrapper">
-  @if ($message=Session::get('success'))
+<div class="content-wrapper" >
+  @if ($message=Session::get('edit'))
 
 <div class="row alert alert-success">
 
@@ -22,7 +22,7 @@
           <div class="card-body">
           <div class="row">
             <div class="col-md-4" style="justify-content: center;padding-left:100px">
-                 <img width="110px" height="110px" src="{{asset('uploads/candidature/admin/'.$candidat['photo'])}}" class="img-fluid">
+                 <img width="110px" height="110px" src="{{asset('uploads/candidature/'.$candidat['photo'])}}" class="img-fluid">
 
             </div>
             <div class="col-md-4">
@@ -201,6 +201,33 @@
                       {{$candidat['ville']}}
                     </td>
                 </tr>
+
+                <tr>
+                    <td>
+                  Identifiants Permanant Par Defaut
+                    </td>
+                    <td>
+                      {{$candidat['id_permanent']}}
+                    </td>
+                </tr>
+
+                <tr>
+                  <td>
+                Numero BTS Par Defaut
+                  </td>
+                  <td>
+                    {{$candidat['numero_bts']}}
+                  </td>
+              </tr>
+
+              <tr>
+                <td>
+             Resultat Examen  BTS
+                </td>
+                <td>
+                  {{$candidat['resultat']}}
+                </td>
+            </tr>
               </tbody>
 
               </table>
