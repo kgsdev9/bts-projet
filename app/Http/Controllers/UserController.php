@@ -11,8 +11,8 @@ class UserController extends Controller
 {
     //
     public function home(){
-      $article= Article::all();
-      $twoarticle = Article::where('visibilite', 'populaire')->take(2)->get();
+      $article= Article::where('visibilite', 'populaire')->take(20)->get();
+      $twoarticle = Article::where('visibilite', 'normale')->take(20)->get();
       return view('welcome',  compact('twoarticle',  'article'));
 
     }

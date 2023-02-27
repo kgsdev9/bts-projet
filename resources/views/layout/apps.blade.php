@@ -3,35 +3,35 @@
 <html lang="en">
 
 <head>
-    <!-- ========== Meta Tags ========== -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Examin - Education and LMS Template">
+  <!-- ========== Meta Tags ========== -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Examin - Education and LMS Template">
 
-    <!-- ========== Page Title ========== -->
-    <title>Bienvenue Sur Institut Roosvelet</title>
+  <!-- ========== Page Title ========== -->
+  <title>Bienvenue Sur Institut Roosvelet</title>
 
-    <!-- ========== Favicon Icon ========== -->
-    <link rel="shortcut icon" href="ressources/img/favicon.png" type="image/x-icon">
+  <!-- ========== Favicon Icon ========== -->
+  <link rel="shortcut icon" href="ressources/img/favicon.png" type="image/x-icon">
 
-    <!-- ========== Start Stylesheet ========== -->
-    <link href="{{asset('ressources/css/bootstrap.min.css')}}" rel="stylesheet" />
-    <link href="{{asset('ressources/css/font-awesome.min.css')}}" rel="stylesheet" />
-    <link href="{{asset('ressources/css/flaticon-set.css')}}" rel="stylesheet" />
-    <link href="{{asset('ressources/css/elegant-icons.css')}}" rel="stylesheet" />
-    <link href="{{asset('ressources/css/magnific-popup.css')}}" rel="stylesheet" />
-    <link href="{{asset('ressources/css/owl.carousel.min.css')}}" rel="stylesheet" />
-    <link href="{{asset('ressources/css/owl.theme.default.min.css')}}" rel="stylesheet" />
-    <link href="{{asset('ressources/css/animate.css')}}" rel="stylesheet" />
-    <link href="{{asset('ressources/css/bootsnav.css')}}" rel="stylesheet" />
-    <link href="{{asset('ressources/style.css')}}" rel="stylesheet">
-    <link href="{{asset('ressources/css/responsive.css')}}" rel="stylesheet" />
-    <!-- ========== End Stylesheet ========== -->
+  <!-- ========== Start Stylesheet ========== -->
+  <link href="{{asset('ressources/css/bootstrap.min.css')}}" rel="stylesheet" />
+  <link href="{{asset('ressources/css/font-awesome.min.css')}}" rel="stylesheet" />
+  <link href="{{asset('ressources/css/flaticon-set.css')}}" rel="stylesheet" />
+  <link href="{{asset('ressources/css/elegant-icons.css')}}" rel="stylesheet" />
+  <link href="{{asset('ressources/css/magnific-popup.css')}}" rel="stylesheet" />
+  <link href="{{asset('ressources/css/owl.carousel.min.css')}}" rel="stylesheet" />
+  <link href="{{asset('ressources/css/owl.theme.default.min.css')}}" rel="stylesheet" />
+  <link href="{{asset('ressources/css/animate.css')}}" rel="stylesheet" />
+  <link href="{{asset('ressources/css/bootsnav.css')}}" rel="stylesheet" />
+  <link href="{{asset('ressources/style.css')}}" rel="stylesheet">
+  <link href="{{asset('ressources/css/responsive.css')}}" rel="stylesheet" />
+  <!-- ========== End Stylesheet ========== -->
 
-    <!-- ========== Google Fonts ========== -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800" rel="stylesheet">
+  <!-- ========== Google Fonts ========== -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800" rel="stylesheet">
 
 </head>
 
@@ -51,49 +51,27 @@
                         <ul>
                             <li>
                                 <i class="fas fa-map"></i>
-                               Abidjan Cote d'ivoire
+                               Abobo Akeikoi, Eglise Saint Marc
                             </li>
                             <li>
                                 <i class="fas fa-envelope-open"></i>
-                                Institutroosvelt@gmail.com
+                                institut.ispr@gmail.com
                             </li>
                             <li>
                                 <i class="fas fa-phone"></i>
-                                +225  07 08 19 23 82
+                                (+225)08.19.23.82 / 56.56.59.75
                             </li>
                         </ul>
                     </div>
                 </div>
-                        @guest
-                        <div class="user-login text-right col-md-4">
-                    <a class="popup-with-form" href="#register-form">
-                        <i class="fas fa-edit"></i> Inscription
-                    </a>
-                    <a  class="popup-with-form" href="#login-form">
-                        <i class="fas fa-user"></i>Connexion
-                    </a>
-                </div>
-                            @else
-                            <div class="user-login text-right col-md-4">
-                    @if(Auth::user()->role=="administrateur")
-                    <a  href="{{url('/admin/index')}}">
-                        @elseif(Auth::user()->role=="utilisateur")
-                        <a  href="{{route('home_dashboard')}}">
-                        @endif
-                        <i class="fas fa-user"></i>Tableau de bord
-                    </a>
-                    <a  href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        <i class="fas fa-logt"></i>Deconnexion
-                    </a>
+                <div class="user-login text-right col-md-4">
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+
 
                 </div>
-
-                        @endguest
-
             </div>
         </div>
     </div>
@@ -101,7 +79,7 @@
 
     <!-- Header
     ============================================= -->
-    <header id="home">
+<header id="home">
 
         <!-- Start Navigation -->
         <nav class="navbar navbar-default attr-border navbar-sticky bootsnav">
@@ -112,7 +90,7 @@
                     <div class="top-search">
                         <div class="input-group">
                             <form action="#">
-                                <input type="text" name="text" class="form-control" placeholder="Rechercher...">
+                                <input type="text" name="text" class="form-control" placeholder="Search">
                                 <button type="submit">
                                     <i class="fas fa-search"></i>
                                 </button>
@@ -129,7 +107,7 @@
                 <div class="attr-nav">
                     <ul>
                         <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                        <li class="side-menu"><a href="#"><i class="fa fa-bars"></i></a></li>
+
                     </ul>
                 </div>
                 <!-- End Atribute Navigation -->
@@ -139,8 +117,8 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <a class="navbar-brand" href="/">
-                        <img src="ressources/img/logo.png" class="logo" alt="Logo" width="140px" class="img-fluid">
+                    <a class="navbar-brand" href="{{url('/')}}">
+                        <img src="{{asset('ressources/img/logo.png')}}" class="logo" style="height:40px;"  alt="Logo">
                     </a>
                 </div>
                 <!-- End Header Navigation -->
@@ -148,68 +126,40 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav navbar-right" data-in="#" data-out="#">
-                        <li >
-                            <a href="{{url('/')}}" class="dropdown-toggle active" data-toggle="dropdown" >Accueil</a>
+                        <li class="dropdown">
+                            <a href="{{url('/')}}">Accueil</a>
 
                         </li>
 
                         <li class="dropdown">
-                            <a href="#" >Nos Filieres</a>
+                            <a href="#" class="dropdown-toggle active" data-toggle="dropdown" >Nos Filieres </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{route('bts.assisatant')}}">Assistanat de Direction</a></li>
+                                <li><a href="{{route('bts.rhcom')}}">Ressources Humaines et Communication</a></li>
+                                <li><a href="{{route('bts.fcgestion')}}">Finances Comptabilités et Gestion des Entreprises</a></li>
+                                <li><a href="{{route('bts.commerciale')}}">Gestion commerciale</a></li>
+                                <li><a href="{{route('bts.tourisme')}}">Tourisme Hôtelerie</a></li>
+                                  <li><a href="{{route('bts.eletronique')}}">Systèmes Electroniques et Informatiques</a></li>
+                                    <li><a href="{{route('bts.reseau')}}">Réseaux Informatiques et Télécommunications</a></li>
+                                      <li><a href="{{route('bts.application')}}">Informatique Developpeur d'Application</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="{{route('login')}}">Mon Compte </a>
 
                         </li>
-
 
                         <li class="dropdown">
-                            <a href="{{route('news')}}" >Actualites</a>
+                            <a href="{{url('/news')}}" >Actualités</a>
 
                         </li>
-
-
                         <li>
-                            <a href="#">contactez-Nous</a>
+                            <a href="{{url('/contact-us')}}">contactez-nous </a>
                         </li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div>
 
-            <!-- Start Side Menu -->
-            <div class="side">
-                <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-                <div class="widget">
-                    <h4 class="title">Institut Roosvelt</h4>
-                    <div class="profile-thumb">
-                        <img src="{{asset('ressources/img/logo.png')}}" alt="Profile">
-                    </div>
-                    <ul>
-                                    @guest
-                                    <li><a href="{{ route('login') }}">Connexion</a></li>
-                                    <li><a href="{{ route('register') }}">Inscription</a></li>
-                                        @else
-                                        @if(Auth::user()->role=="administrateur")
-                                        <li><a href="{{ url('/admin/index') }}">Tableau de bord</a></li>
-                                        <li><a href="/">Contactez-Nous</a></li>
-                                            @elseif(Auth::user()->role=="utilisateur")
-                                            <li><a href="{{ route('home_dashboard') }}">Tableau de bord</a></li>
-                                            <li><a href="/">Contactez-Nous</a></li>
-                                            @endif
-                                    @endguest
-
-
-
-                    </ul>
-                </div>
-
-                <div class="widget social">
-                    <h4 class="title">RESEAUX SOCIAUX </h4>
-                    <ul class="link">
-                        <li class="facebook"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li class="twitter"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                        <li class="pinterest"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                        <li class="dribbble"><a href="#"><i class="fab fa-dribbble"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- End Side Menu -->
 
         </nav>
         <!-- End Navigation -->
@@ -217,129 +167,11 @@
     </header>
     <!-- End Header -->
 
-    <!-- Start Login Form
-    ============================================= -->
-    <form action="{{route('login')}}" id="login-form" class="mfp-hide white-popup-block" method="POST">
-        @csrf
-        <div class="col-md-4 login-social">
-            <h4>Se Connecer Via </h4>
-            <ul>
-                @if ($errors->any())
-                <div   div class="alert alert-danger">
-                 <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-                    @endif
 
+    @yield('content')
+    <br><br>
 
-            </ul>
-        </div>
-        <div class="col-md-8 login-custom">
-            <h4>Espace De Connexion!</h4>
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="form-group">
-                        <input class="form-control" placeholder="Votre Adresse E-mail*" type="email" name="email">
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="form-group">
-                        <input class="form-control" placeholder="Mot de passe*" type="password" name="password">
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="row">
-                    <label for="login-remember"><input type="checkbox" id="login-remember">Se Souvenir de Moi   </label>
-                    <a title="Lost Password" href="#" class="lost-pass-link">Mot De Passe Oublié?</a>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="row">
-                    <button type="submit">
-                      Se Connecter
-                    </button>
-                </div>
-            </div>
-            <p class="link-bottom">Nous Sommes Ravi  <a href="">De Vous Revoir ! </a></p>
-        </div>
-    </form>
-    <!-- End Login Form -->
-
-
-
-    <!-- Start Register Form
-    ============================================= -->
-    <form action="{{route('register')}}" id="register-form" class="mfp-hide white-popup-block" method="POST">
-        @csrf
-        <div class="col-md-4 login-social">
-            <h4>S'inscrire Via</h4>
-            <ul>
-
-               @if ($errors->any())
-            <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-            </div>
-    @endif
-
-
-            </ul>
-        </div>
-        <div class="col-md-8 login-custom">
-            <h4>Inscrivez-Vous Sur Institut Roosvelet</h4>
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="form-group">
-                        <input class="form-control" placeholder="Nom D'utilisateur*" type="text" name="name">
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="form-group">
-                        <input class="form-control" placeholder="Votre E-mail*" type="email" name="email" >
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="form-group">
-                        <input class="form-control" placeholder="Entrer Votre Mot De Passe*" type="password" name="password">
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="form-group">
-                        <input class="form-control" placeholder="Confirmer Votre Mot De Passe*" type="password" name="password_confirmation">
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="row">
-                    <button type="submit">
-                       S'inscrire
-                    </button>
-                </div>
-            </div>
-            <p class="link-bottom">Vous avez deja un compte? <a href="{{route('login')}}">Connectez-Vous</a></p>
-        </div>
-    </form>
-    <!-- End Register Form -->
-            @yield('content')
-    <!-- Start Footer
-    ============================================= -->
-    <footer class="bg-dark default-padding-top text-light">
+   <footer class="bg-dark default-padding-top text-light">
         <div class="container">
             <div class="row">
                 <div class="f-items">
@@ -488,9 +320,6 @@
     <script src="{{asset('ressources/js/jquery.nice-select.min.js')}}"></script>
     <script src="{{asset('ressources/js/bootsnav.js')}}"></script>
     <script src="{{asset('ressources/js/main.js')}}"></script>
-
-
-
 
 </body>
 </html>

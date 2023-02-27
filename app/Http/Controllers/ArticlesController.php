@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreArticleRequest;
 
@@ -18,7 +19,8 @@ class ArticlesController extends Controller
      */
 
         public function news() {
-            $article = Article::paginate(9);
+            $article= Article::where('visibilite', 'normale')->take(20)->get();
+
             return view('publication.news', compact('article'));
         }
 
@@ -65,15 +67,15 @@ class ArticlesController extends Controller
         $ceate_articles->user_id =Auth::id();
 
         if($request->hasfile('image')) {
+            $file = $request->file('image');
+            $filename  = $file->getClientOriginalName();
+            $img = Image::make($file->getRealPath());
+            $img->resize(800, 600);
+            $img->save(public_path('uploads/articles/'.$filename));
 
-                $file = $request->file('image');
-                $extention = $file->getClientOriginalExtension();
-                $filename  = time(). '.' .$extention ;
-                $file->move('uploads/articles', $filename);
-                $ceate_articles->image = $filename;
-        }
+            $ceate_articles->image = $filename;
+         }
         $ceate_articles->save();
-
          return redirect()->route('liste.articles')->with('message', 'Votre article a été publié avec success');
 
 

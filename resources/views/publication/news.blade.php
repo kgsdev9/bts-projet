@@ -10,45 +10,37 @@
 
                             @foreach ($article as $c )
                                    <!-- Single Item -->
-                <div class="col-md-4 col-sm-6 equal-height" style="height: 647px;">
-                    <div class="item">
-                        <div class="thumb">
 
-                            <div class="price">INSTITUT ROOSVELET</div>
-                        </div>
-                        <div class="info">
-                            <div class="author-info">
-                                <div class="thumb">
-                                    <a href="#"><img src="{{asset('uploads/articles/'.$c->image)}}" alt="Thumb"></a>
-                                </div>
-                                <div class="others">
-                                    <a href="#">INSTITUT ROOSVELET</a>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half-alt"></i>
+                                   <div class="col-md-4 col-sm-6 equal-height" style="height: 678px;">
+                                    <div class="item">
+                                        <div class="thumb">
+                                            <a href="{{route('content_article_index', $c->id)}}">
+                                                <img src="{{asset('uploads/articles/'.$c->image)}}" alt="Thumb">
+                                            </a>
+                                            <div class="overlay">
+                                                <a class="btn btn-theme effect btn-sm" href="#">
+                                                    <i class="fas fa-chart-bar"></i> Consulter
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="info">
 
+                                            <h4><a href="#">{{$c->name_article}}</a></h4>
+                                            <div class="cats">
+                                                <a href="#">Education</a>
+                                                <a href="#">Science</a>
+                                            </div>
+                                            <p>
+                                                    {{Str::limit($c->description, 80)}}
+                                            </p>
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <h4><a href="#">{{Str::limit($c->name_article, 20)}}</a></h4>
-                            <p>
-                                {{Str::limit($c->description, 90)}}
-                            </p>
-                            <div class="bottom-info">
-                                <ul>
-                                    <li>
-                                        <i class="fas fa-user"></i>ISPR
-                                    </li>
 
-                                </ul>
-                                <a href="{{route('content.index', $c->id)}}">Lire La suite</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+
+
                 <!-- End Single Item -->
                             @endforeach
 

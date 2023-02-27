@@ -147,3 +147,54 @@ Route::get('/admin/profil',  function(){
 
 
 Route::get('/news', [ArticlesController::class, 'news'])->name('news');
+
+
+//pages statistiques pour les filieres de formations
+
+
+Route::get('/assistanat-de-direction-forms-controller-001', function() {
+    return view('formation.assistanat-direction');
+})->name('bts.assisatant');
+
+Route::get('/ressource-humaine-communication-forms-controller-0023', function() {
+    return view('formation.ressources-humaines-et-communication-rhcom');
+})->name('bts.rhcom');
+
+
+Route::get('/finances-comptabillite-gestion-forms-controller-004', function() {
+    return view('formation.finance-comptabilite-gestion-entreprise');
+})->name('bts.fcgestion');
+
+
+Route::get('/gestion-commerciale-forms-controller-006', function() {
+    return view('formation.gestion-commerciale');
+})->name('bts.commerciale');
+
+Route::get('/tourisme-hotelerie-forms-controller-034', function() {
+    return view('formation.tourisme-hoteliere');
+})->name('bts.tourisme');
+
+Route::get('/system-electronique-gestion-0045', function() {
+    return view('formation.systeme-electronique-informatique');
+})->name('bts.eletronique');
+
+Route::get('/reseau-informatique-gestion-005', function() {
+    return view('formation.reseau-informatique-telecommunuciation');
+})->name('bts.reseau');
+
+Route::get('/informatique-developpeur-apps-007', function() {
+    return view('formation.informatique-developpeur-application');
+})->name('bts.application');
+
+
+
+
+Route::get('/contact-us', function() {
+    return view('contact');
+});
+
+
+
+Route::get('/about-us', function() {
+ return view('about');
+});
